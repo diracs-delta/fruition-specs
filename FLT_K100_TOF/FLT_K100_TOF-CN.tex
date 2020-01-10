@@ -24,7 +24,16 @@
 \graphicspath{{./figures/}}
 \definecolor{light-gray}{gray}{0.95}
 
-% defined macros
+% define macros
+\newcommand{\pchapter}[1]{
+	\begingroup\let\clearpage\relax
+	\newpage
+	\begin{figure}[H]
+		\includegraphics[width=0.25\textwidth]{logo.jpeg}
+	\end{figure}
+	\chapter{#1}
+	\endgroup
+}
 \newcommand{\modelno}{
 	\texttt{FLT\char`_K100\char`_TOF}
 }
@@ -49,11 +58,13 @@
 	\end{table}
 }
 
-
-
 % define header, title, date
 \lohead{\includegraphics[width=\marginparwidth]{logo.jpeg}}
 \title{
+	\begin{figure}[H]
+		\centering\includegraphics[width=0.5\textwidth]{logo.jpeg}
+	\end{figure}
+	\vspace{1cm}
 	\flushright
 	\Huge{TOF MODULE}\\
 	\Huge{HARDWARE SPECIFICATION}\\
@@ -63,7 +74,7 @@
 	\LARGE{Prepared by David Qiu \\ on behalf of FRUITION CO., LTD.}
 }
 \date{
-	Last revision: January 9th, 2020 \\
+	Last revision: January 10th, 2020 \\
 	Full revision history is available at \upstream.
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -72,7 +83,7 @@
 \maketitle
 \tableofcontents
 
-\chapter{Product Overview}
+\pchapter{Product Overview}
 \section{Brief Description}
 距离测量传感器，单元测量距离：2.5至10cm
 
@@ -159,7 +170,7 @@ PIN 2 & SDA & DATA BUS & PIN 4 & 3.3V & --    \\
 \caption{Distance response curve before and after crosstalk calibration.}
 \end{figure}
 
-\chapter{串扰校准}
+\pchapter{串扰校准}
 为了提高设计或可靠性，保留在任何时候对本文件所描述的规格、特性、数据、材料、结构和其他内容进行更改的权利。
 在本模块应用设计时，请注意以下各点。
 对于不符合有关规格表规定的条件，和绝对最高额定值或未满足工作条件的设备不当使用所造成的损害，福临通不承担任何责任。
