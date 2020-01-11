@@ -1,0 +1,143 @@
+% this is the TeX template used for the hardware specifications. the fields
+% labelled with <++> must be completed.
+
+\documentclass{scrreprt}
+
+% allow images
+\usepackage{graphicx}
+% allow chinese
+\usepackage{CJK}
+% lists
+\usepackage{enumitem}
+% hyperlinked TOC (note the CJKbookmarks boolean)
+\usepackage[CJKbookmarks = true]{hyperref}
+% allow figures and tables to hold position
+\usepackage{float}
+% pretty tables
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+% symbols
+\usepackage{gensymb}
+% format headers and footers
+\usepackage[automark,headsepline,footsepline,plainfootsepline]{scrlayer-scrpage}
+% allow for usage of \Blinddocument to test formatting
+\usepackage{mwe}
+
+% options
+% <++> \graphicspath{{./figures/}}
+\definecolor{light-gray}{gray}{0.95}
+
+% define macros
+\newcommand{\pchapter}[1]{
+	\begingroup\let\clearpage\relax
+	\newpage
+	\begin{figure}[H]
+		\includegraphics[width=0.25\textwidth]{logo.jpeg}
+	\end{figure}
+	\chapter{#1}
+	\endgroup
+}
+\newcommand{\modelno}{
+	\texttt{<++>}
+}
+\newcommand{\upstream}{
+	\small\texttt{https://github.com/diracs-delta/fruition-specs/%
+		      tree/master/<++>}
+}
+\newcommand{\x}{
+	$\times$
+}
+\newenvironment{ptable}[2][def]
+{
+	\begin{table}[H]
+	\centering
+	\rowcolors{1}{white}{light-gray}
+	\caption{#1}
+	\begin{tabular}{#2}
+	\toprule
+}
+{
+	\bottomrule
+	\end{tabular}
+	\end{table}
+}
+
+% define header, title, date
+\lohead{\includegraphics[width=\marginparwidth]{logo.jpeg}}
+\title{
+	\begin{figure}[H]
+		\centering\includegraphics[width=0.5\textwidth]{logo.jpeg}
+	\end{figure}
+	\vspace{1cm}
+	\flushright
+%	<++>
+	\Huge{DATA SHEET TEMPLATE}\\
+	\vspace{2cm}
+	\huge{Model No. \modelno}\\
+	\vspace{2cm}
+	\LARGE{Prepared by David Qiu \\ on behalf of FRUITION CO., LTD.}
+}
+\date{
+%	<++>
+	Last revision: January 11th, 2019\\
+	\vspace{0.5cm}
+	Full revision history and latest data sheets are available at\\
+	\vspace{0.25cm}
+	\upstream.
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{CJK*}{UTF8}{gbsn}
+\maketitle
+\tableofcontents
+
+\pchapter{Template Overview}
+\section{Custom Macros}
+\begin{itemize}
+\item \verb|\pchapter{#1}| -- Prints a chapter header (\verb|#1|) with a
+left-justified image (\verb|logo.jpeg| by default) above it. This chapter is
+formatted using \verb|\pchapter|; the next one isn't.
+
+\item \verb|\upstream| -- Prints the upstream URL formatted in the Typewriter
+font family.
+
+\item \verb|\modelno| -- Prints model number formatted in the Typewriter font
+family.
+\end{itemize}
+
+\section{Custom Environments}
+\begin{itemize}
+\item \verb|ptable[1]{2}| -- Used to format tables using \verb|booktabs| and
+\verb|tabular| captioned above by \verb|#1|. \verb|#2| defines the alignment of
+the text in each column, with one letter per column, read left-to-right. See
+\verb|tabular| documentation for more information.
+
+	\begin{itemize}
+	\item Example:
+
+	\begin{verbatim}
+	\begin{ptable}[绝对最大额定值]{ccccc}
+	参数     & 符号 & 条件& 额定值          & 单位      \\
+	\midrule
+	供电电压 & VDD  & --  & 0 - 3.8         & V         \\
+	静电防护 & ESD  & HBM & 2               & kV        \\
+	储存温度 & TSTG & --  & $-40$ -- $+125$ & \degree C \\
+	\end{ptable}
+	\end{verbatim}
+
+	\begin{ptable}[绝对最大额定值]{ccccc}
+	参数     & 符号 & 条件& 额定值          & 单位      \\
+	\midrule
+	供电电压 & VDD  & --  & 0 - 3.8         & V         \\
+	静电防护 & ESD  & HBM & 2               & kV        \\
+	储存温度 & TSTG & --  & $-40$ -- $+125$ & \degree C \\
+	\end{ptable}
+	\end{itemize}
+\end{itemize}
+
+
+\Blinddocument
+
+\end{CJK*}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
