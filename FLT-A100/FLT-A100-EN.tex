@@ -1,0 +1,137 @@
+\documentclass{scrreprt}
+
+% allow images
+\usepackage{graphicx}
+% allow chinese
+\usepackage{CJK}
+% lists
+\usepackage{enumitem}
+% hyperlinked TOC (note the CJKbookmarks boolean)
+\usepackage[CJKbookmarks = true]{hyperref}
+% allow figures and tables to hold position
+\usepackage{float}
+% pretty tables
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+% symbols
+\usepackage{gensymb}
+% format headers and footers
+\usepackage[automark,headsepline,footsepline,plainfootsepline]{scrlayer-scrpage}
+% allow for usage of \Blinddocument to test formatting
+\usepackage{mwe}
+
+% options
+\graphicspath{{./figures/} {../}}
+\definecolor{light-gray}{gray}{0.95}
+
+% define macros
+\newcommand{\pchapter}[1]{
+	\begingroup\let\clearpage\relax
+	\newpage
+	\begin{figure}[H]
+		\includegraphics[width=0.25\textwidth]{logo.jpeg}
+	\end{figure}
+	\chapter{#1}
+	\endgroup
+}
+\newcommand{\modelno}{%
+	\texttt{FLT-A100}
+}
+\newcommand{\upstream}{
+	\small\texttt{https://github.com/diracs-delta/fruition-specs/%
+		      tree/master/FLT-A100-EN}
+}
+\newcommand{\x}{
+	$\times$
+}
+\newenvironment{ptable}[2][def]
+{
+	\begin{table}[H]
+	\centering
+	\rowcolors{1}{white}{light-gray}
+	\caption{#1}
+	\begin{tabular}{#2}
+	\toprule
+}
+{
+	\bottomrule
+	\end{tabular}
+	\end{table}
+}
+
+% define header, title, date
+\lohead{\includegraphics[width=\marginparwidth]{logo.jpeg}}
+\title{
+	\begin{figure}[H]
+		\centering\includegraphics[width=0.5\textwidth]{logo.jpeg}
+	\end{figure}
+	\vspace{1cm}
+	\flushright
+	\Huge{IMU MODULE}\\
+	\Huge{HARDWARE SPECIFICATION}\\
+	\vspace{2cm}
+	\huge{Model No. \modelno}\\
+	\vspace{2cm}
+	\LARGE{Prepared by David Qiu \\ on behalf of FRUITION CO., LTD.}
+}
+\date{
+	Last revision: January 11th, 2019\\
+	\vspace{0.5cm}
+	Full revision history and latest data sheets are available at\\
+	\vspace{0.25cm}
+	\upstream.
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{CJK*}{UTF8}{gbsn}
+\maketitle
+\tableofcontents
+
+\pchapter{Product Overview}
+\section{General Description}
+The \modelno is Fruition's latest inertial measurement unit (IMU) module, an
+economical solution to any hardware application in need of gyroscopic or
+accelerometric measurements.
+
+The \modelno IMU module is a tri-axis accelerometer and gyroscope, integrated
+with an energy-efficient microprocessor suitable for low power applications. The
+module firmware also contains an advanced signal processing algorithm aimed at
+noise reduction. It also contains a sensor fusion algorithm that outputs its
+three principal axes, i.e.\ its roll, pitch, and yaw. The module also supports
+UART communication through its stamp half-hole patch interface.
+
+Our module is especially suitable towards robotics industries necessitating
+modules that are space-efficient. The \modelno IMU module is only
+15.2\x17.8 mm in size, making it perfect for such applications.
+
+\section{Features}
+\begin{itemize}
+\item Small size that is competitive with existing MEMS sensors.
+
+\item Integrated high-precision six-axis gyroscope.
+
+\item UART interface with high baud rate and I/O frequency.
+
+\item Accurate sensor fusion algorithm that calculates the roll, pitch, and yaw.
+
+\item High stability against thermal and vibrational fluctuation.
+
+\item Low power consumption.
+\end{itemize}
+
+\pchapter{Legal}
+\section{Safety Information}
+This device is sensitive to electrostatic discharge (ESD). Though the module
+comes with standard ESD circuit protection, the components may still malfunction
+if ESD occurs. Standard ESD precautions should be taken when handling this
+device.
+
+\section{Liability}
+\textbf{SHENZHEN FRUITION CO., LTD.} shall not be liable, under any
+circumstances, for any special, indirect, incidental, consequential, or
+contingent damages for any reason, whether or not the buyer has been advised of
+the possibility of such damage.
+
+\end{CJK*}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
