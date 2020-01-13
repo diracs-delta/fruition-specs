@@ -20,9 +20,13 @@
 % allow for usage of \Blinddocument to test formatting
 \usepackage{mwe}
 
+\usepackage{csvsimple}
+
 % options
 \graphicspath{{./figures/} {../}}
 \definecolor{light-gray}{gray}{0.95}
+%% alternate table row colors
+\rowcolors{1}{white}{light-gray}
 
 % define macros
 \newcommand{\pchapter}[1]{
@@ -44,18 +48,10 @@
 \newcommand{\x}{
 	$\times$
 }
-\newenvironment{ptable}[2][def]
-{
+\newcommand{\ptable}[2]{
 	\begin{table}[H]
-	\centering
-	\rowcolors{1}{white}{light-gray}
-	\caption{#1}
-	\begin{tabular}{#2}
-	\toprule
-}
-{
-	\bottomrule
-	\end{tabular}
+	\caption{#2}
+	\centering\csvautobooktabular{#1}
 	\end{table}
 }
 
@@ -118,6 +114,126 @@ modules that are space-efficient. The \modelno IMU module is only
 
 \item Low power consumption.
 \end{itemize}
+
+\section{Applications}
+\begin{itemize}
+\item Inertial navigation system for all portable robots, such as flying drones,
+autonomous lawn mowers, or robot vacuums.
+\end{itemize}
+
+\section{Module Dimensions}
+\begin{figure}[H]
+\includegraphics{module_dim.png}
+\caption{General dimensions of the \modelno IMU module.}
+\end{figure}
+
+\section{Operating Ranges}
+\begin{itemize}
+\item Operating temperature range: $-40$/$+85$ \degree C
+	\begin{itemize}
+	\item Recommended: $-20$/$+70$ \degree C.
+	\end{itemize}
+
+\item Storage temperature range: $-40$/$+125$ \degree C.
+
+\item Maximum working voltage (GND/VCC): $-0.3$V/$+4.5$V.
+	\begin{itemize}
+	\item Recommended: $-0.15$V/$3.3$V
+	\end{itemize}
+
+\item Maximum acceleration: $\pm$40 m/s$^2$ along any axis.
+
+\item Maximum angular velocity: $\pm$1000 degrees/second (dps) along any axis.
+
+\item Maximum pitch and roll: $\pm$ 90 degrees.
+
+\item Maximum yaw: $\pm$ 180 degrees.
+\end{itemize}
+
+\section{Coordinate System Reference}
+The most sensitive axis of the \modelno IMU module is perpendicular to the
+module's plane. This is labelled the Z axis. The roll, pitch, and yaw are all
+defined using the right-hand-rule, and are defined to be in the direction of
+rotation with respect to the X, Y, and Z axes, respectively.
+
+\pchapter{Module I/O}
+\section{General I/O Scheme}
+\begin{figure}[H]
+\caption{Flowchart depicting the I/O scheme of the \modelno IMU module.}
+\centering\includegraphics{module_io}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Location of pins on the \modelno IMU module}
+\centering\includegraphics{module_top}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Circuit diagram of the \modelno IMU module}
+\centering\includegraphics{circuit_diagram}
+\end{figure}
+
+\section{Pin Definitions}
+\ptable{tables/pin_definitions.csv}{Pin definitions of the \modelno IMU module.}
+
+\section{Communication Protocol}
+The \modelno IMU module utilizes the UART communication interface, configured as
+follows.
+
+\begin{itemize}
+\item Baud rate: 115200.
+
+\item 8-bit data length.
+
+\item No odd/even verification.
+
+\item 1-bit stop.
+\end{itemize}
+
+The \modelno IMU module provides outputs data at 100 packets/second (Hz). The
+format of each data packet is as follows.
+
+\ptable{tables/packet_breakdown.csv}{%
+	Breakdown of the data packets output by the \modelno IMU module. The
+	units of the pitch, roll, yaw are in units of degrees. The units of the
+	acceleration are in units of m/s$^2$. The units of angular velocity are
+	in dps. The units of temperature are in \degree C.
+}
+
+An example data packet may appear as the following.
+
+\begin{verbatim}
+0xFF FE 00 5E 05 02 00 5D26 34 01 4F 06 1E 0A 12 47F2 1A E4 B2 F4 00 00 89
+\end{verbatim}
+
+The breakdown of this example packet is as follows.
+
+\ptable{tables/packet_example.csv}{%
+	Interpretation of the above example data packet.
+}
+
+\subsection{Status Byte Interpretation}
+
+The status byte has three possible values.
+
+\begin{itemize}
+\item \textbf{Status = 0}: IMU Calibration successful. The data contained within
+this packet has the highest accuracy.
+
+\item \textbf{Status = 1}: Excessive tilt detected during IMU calibration.
+Please re-calibrate.
+
+\item \textbf{Status = 2}: Excessive motion detected during IMU calibration.
+Angular measurements remain accurate. Please re-calibrate.
+
+\item \textbf{Status = 3}: Excessive tilt and excessive motion detected during
+IMU calibration. Please re-calibrate.
+\end{itemize}
+
+\chapter{Supplementary Information}
+\begin{figure}[H]
+\centering\includegraphics[width=\textwidth]{uart_timing}
+\end{figure}
 
 \pchapter{Legal}
 \section{Safety Information}

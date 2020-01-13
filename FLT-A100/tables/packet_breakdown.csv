@@ -1,0 +1,16 @@
+Output data,Byte No.,Description
+Packet header,1-2,0xFFFE
+Index ,3,0x00~ 0xFF
+Pitch angle,4-5,Real angle multiplied by 100
+Roll angle,6-7,Real angle multiplied by 100
+Yaw angle,8-9,Real angle multiplied by 100
+X-axis acceleration,10-11,Real acceleration multiplied by 100
+Y-axis acceleration,12-13,Real acceleration multiplied by 100
+Z-axis acceleration,14-15 ,Real acceleration multiplied by 100
+X-axis angular velocity,16-17,Real angular velocity multiplied by 100
+Y-axis angular velocity,18-19,Real angular velocity multiplied by 100
+Z-axis angular velocity,20-21,Real angular velocity multiplied by 100
+Temperature,22,Real temperature minus 30 and then multiplied by 2
+Reserve,23,--
+Status Byte,24,--
+Checksum,25,Sum of all preceding bytes excluding the header

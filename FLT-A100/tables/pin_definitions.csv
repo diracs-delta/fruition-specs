@@ -1,13 +1,11 @@
 Pin,Name,I/O ,Function
-1,BOOTO,I: input,"Start method 
-(start from internal flash)"
-2,RX,I: input,UART receive data
-3,TX,O:output,UART send data
+1,BOOTO,I,"Start method (start from internal flash)"
+2,RX,I,UART receive data
+3,TX,O,UART send data
 4,GND,--,Ground
 5,3.3V,--,Power( 3.3V DC)
 6,GND,--,Ground
 7,GND,--,Ground
 8,NC,--,Reserve
-"
-",NC,--,Reserve
-10,RST,I: input,System reset(active low valid)
+9,NC,--,Reserve
+10,RST,I,System reset(active low valid)

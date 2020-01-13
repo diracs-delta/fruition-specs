@@ -1,0 +1,14 @@
+Output data,Interpretation
+Index,\texttt{0x00}
+Pitch angle,\texttt{0x055E} = 13.74 degrees
+Roll angle,\texttt{0x0002} = 0.02 degrees
+Yaw angle,\texttt{0x265D} = 98.21 degrees
+X-axis acceleration,\texttt{0x0134} = 3.08 m/s$^2$
+Y-axis acceleration,\texttt{0x064F} = 16.15 m/s$^2$
+Z-axis acceleration,\texttt{0x0A1E} = 25.90 m/s$^2$
+X-axis angular velocity,\texttt{0x4712} = 181.94 dps
+Y-axis angular velocity,\texttt{0x1AF2} = 68.98 dps
+Z-axis angular velocity,\texttt{0xB2E4} = 457.96 dps
+Temperature,\texttt{0xF4} = 24 \degree C
+Status Byte,\texttt{0x00} = 0
+Checksum,\texttt{0x89}
