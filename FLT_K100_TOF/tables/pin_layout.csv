@@ -1,0 +1,2 @@
+PIN1,GND,--,PIN3,SCL,Clock
+PIN2,SDA,Data bus,PIN4,3.3V,--

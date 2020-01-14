@@ -1,0 +1,3 @@
+Parameters, Abbreviations, Conditions, Ratings, Units
+工作电压,VDD,--,3.3V/0.15V (+/-),V
+工作温度,TA,--,$-20$--$+70$,\degree C

@@ -1,5 +1,4 @@
 \documentclass{scrreprt}
-
 % allow images
 \usepackage{graphicx}
 % allow chinese
@@ -19,6 +18,8 @@
 \usepackage[automark,headsepline,footsepline,plainfootsepline]{scrlayer-scrpage}
 % allow for usage of \Blinddocument to test formatting
 \usepackage{mwe}
+% csv tables
+\usepackage{csvsimple}
 
 % options
 \graphicspath{{./figures/} {../}}
@@ -44,18 +45,10 @@
 \newcommand{\x}{
 	$\times$
 }
-\newenvironment{ptable}[2][def]
-{
+\newcommand{\ptable}[2]{
 	\begin{table}[H]
-	\centering
-	\rowcolors{1}{white}{light-gray}
-	\caption{#1}
-	\begin{tabular}{#2}
-	\toprule
-}
-{
-	\bottomrule
-	\end{tabular}
+	\caption{#2}
+	\centering\csvautobooktabular{#1}
 	\end{table}
 }
 
@@ -129,31 +122,16 @@
 \end{figure}
 
 \section{Detailed Specifications}
-\begin{ptable}[接口定义]{cccccc}
-PIN 1 & GND & --       & PIN 3 & SCL  & CLOCK \\
-\midrule
-PIN 2 & SDA & DATA BUS & PIN 4 & 3.3V & --    \\
-\end{ptable}
+\ptable{tables/pin_layout.csv}{接口定义}
 
 \begin{figure}[H]
 \center\includegraphics[width=0.5\textwidth]{pins.png}
 \caption{接口定义}
 \end{figure}
 
-\begin{ptable}[工作条件]{ccccc}
-参数   & 符号  & 条件 & 额定值            & 单位        \\
-\midrule
-工作电压 & VDD & -- & 3.3 $\pm$ 0.15 & V         \\
-工作温度 & TA  & -- & $-20$ -- 70    & \degree C \\
-\end{ptable}
+\ptable{tables/operating_ranges.csv}{工作条件}
 
-\begin{ptable}[绝对最大额定值]{ccccc}
-参数   & 符号   & 条件  & 额定值             & 单位        \\
-\midrule
-供电电压 & VDD  & --  & 0 - 3.8         & V         \\
-静电防护 & ESD  & HBM & 2               & kV        \\
-储存温度 & TSTG & --  & $-40$ -- $+125$ & \degree C \\
-\end{ptable}
+\ptable{tables/maximum_rating.csv}{绝对最大额定值}
 
 \section{串扰校准}
 该传感器采用TDC方法，在IC内部生成直方图，并计算出与直方图的距离值。图
