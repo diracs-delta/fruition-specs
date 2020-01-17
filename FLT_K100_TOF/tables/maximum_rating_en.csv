@@ -1,0 +1,4 @@
+Parameters, Abbreviations, Conditions, Ratings, Units
+Supply Voltage,VDD,--,0--3.8,V
+ESD Protection,ESD,HBM,2,KV
+Storage Temperature,TSTG,--,$-40$--$+125$,\degree C

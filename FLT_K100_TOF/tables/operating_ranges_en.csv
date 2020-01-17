@@ -1,0 +1,3 @@
+Parameters, Abbreviations, Conditions, Ratings, Units
+Voltage,VDD,--,3.3V/0.15V (+/-),V
+Temperature,TA,--,$-20$--$+70$,\degree C
