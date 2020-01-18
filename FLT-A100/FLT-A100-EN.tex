@@ -19,7 +19,7 @@
 \usepackage[automark,headsepline,footsepline,plainfootsepline]{scrlayer-scrpage}
 % allow for usage of \Blinddocument to test formatting
 \usepackage{mwe}
-
+% import tables from CSV files
 \usepackage{csvsimple}
 
 % options
@@ -40,10 +40,6 @@
 }
 \newcommand{\modelno}{%
 	\texttt{FLT-A100}
-}
-\newcommand{\upstream}{
-	\small\texttt{https://github.com/diracs-delta/fruition-specs/%
-		      tree/master/FLT-A100-EN}
 }
 \newcommand{\x}{
 	$\times$
@@ -71,11 +67,7 @@
 	\LARGE{Prepared by David Qiu \\ on behalf of FRUITION CO., LTD.}
 }
 \date{
-	Last revision: January 11th, 2019\\
-	\vspace{0.5cm}
-	Full revision history and latest data sheets are available at\\
-	\vspace{0.25cm}
-	\upstream.
+	Last revision: January 18th, 2019\\
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}

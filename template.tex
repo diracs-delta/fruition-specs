@@ -26,6 +26,8 @@
 % options
 % <++> \graphicspath{{./figures/} {../}}
 \definecolor{light-gray}{gray}{0.95}
+%% alternate table row colors
+\rowcolors{1}{white}{light-gray}
 
 % define macros
 \newcommand{\pchapter}[1]{
@@ -40,25 +42,13 @@
 \newcommand{\modelno}{
 	\texttt{<++>}
 }
-\newcommand{\upstream}{
-	\small\texttt{https://github.com/diracs-delta/fruition-specs/%
-		      tree/master/<++>}
-}
 \newcommand{\x}{
 	$\times$
 }
-\newenvironment{ptable}[2][def]
-{
+\newcommand{\ptable}[2]{
 	\begin{table}[H]
-	\centering
-	\rowcolors{1}{white}{light-gray}
-	\caption{#1}
-	\begin{tabular}{#2}
-	\toprule
-}
-{
-	\bottomrule
-	\end{tabular}
+	\caption{#2}
+	\centering\csvautobooktabular{#1}
 	\end{table}
 }
 
@@ -79,11 +69,7 @@
 }
 \date{
 %	<++>
-	Last revision: January 11th, 2019\\
-	\vspace{0.5cm}
-	Full revision history and latest data sheets are available at\\
-	\vspace{0.25cm}
-	\upstream.
+	Last revision: January 16th, 2019\\
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -98,43 +84,17 @@
 left-justified image (\verb|logo.jpeg| by default) above it. This chapter is
 formatted using \verb|\pchapter|; the next one isn't.
 
-\item \verb|\upstream| -- Prints the upstream URL formatted in the Typewriter
-font family.
-
 \item \verb|\modelno| -- Prints model number formatted in the Typewriter font
 family.
+
+\item \verb|\ptable{#1}{#2}| -- Prints a booktabs table formatted with
+\verb|csvsimple|. \verb|#1| is the path of the CSV file relative to the parent
+directory of the TEX file (usually \verb|tables/*|), and \verb|#2| is the
+caption. Also, \textbf{multibyte characters (i.e. Chinese) cannot be typeset in
+the header (i.e. first row) of any table}. This is a bug inherent to
+\verb|csvsimple|, and it is easier just to translate each header to English than
+it is to find some hack to fix it.
 \end{itemize}
-
-\section{Custom Environments}
-\begin{itemize}
-\item \verb|ptable[1]{2}| -- Used to format tables using \verb|booktabs| and
-\verb|tabular| captioned above by \verb|#1|. \verb|#2| defines the alignment of
-the text in each column, with one letter per column, read left-to-right. See
-\verb|tabular| documentation for more information.
-
-	\begin{itemize}
-	\item Example:
-
-	\begin{verbatim}
-	\begin{ptable}[绝对最大额定值]{ccccc}
-	参数     & 符号 & 条件& 额定值          & 单位      \\
-	\midrule
-	供电电压 & VDD  & --  & 0 - 3.8         & V         \\
-	静电防护 & ESD  & HBM & 2               & kV        \\
-	储存温度 & TSTG & --  & $-40$ -- $+125$ & \degree C \\
-	\end{ptable}
-	\end{verbatim}
-
-	\begin{ptable}[绝对最大额定值]{ccccc}
-	参数     & 符号 & 条件& 额定值          & 单位      \\
-	\midrule
-	供电电压 & VDD  & --  & 0 - 3.8         & V         \\
-	静电防护 & ESD  & HBM & 2               & kV        \\
-	储存温度 & TSTG & --  & $-40$ -- $+125$ & \degree C \\
-	\end{ptable}
-	\end{itemize}
-\end{itemize}
-
 
 \Blinddocument
 

@@ -1,0 +1,4 @@
+Parameters, Abbreviations, Conditions, Ratings, Units
+供电电压,VDD,--,0--3.8,V
+静电防护,ESD,HBM,2,KV
+储存温度,TSTG,--,$-40$--$+125$,\degree C
