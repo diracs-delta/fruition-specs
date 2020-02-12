@@ -1,0 +1,6 @@
+Pin,Name,I/O,Function
+1,3.3V,Input,Power（3.3V DC）
+2,TX,Input,UART send data
+3,RX,Output,UART receive data
+4,GND,\textendash,Ground
+5,RST,\textendash,System reset

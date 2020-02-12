@@ -1,0 +1,19 @@
+Specification,Value
+Dimension,15.24mm x 17.78mm x 3.1mm
+Displacement Resolution,1 mm
+Pitch Resolution,0.01\degree(MAX.)
+Roll Resolution,0.01\degree(MAX.)
+Yaw Resolution,0.01\degree(MAX.)
+Pitch Range,$\pm$90°
+Roll Range,$\pm$90°
+Yaw Range,$\pm$180°
+With LASER light source error,1% (MAX.)
+With LED light error,3% (AVE.)
+Course angle error,20\degree /hr (MAX.)
+Angular rate error,$\pm$900\degree /sec (MAX.)
+Angular rate movement error,$\pm$0.01\degree /sec (MAX.)
+Output frequency,100Hz
+Power,17.5mA (at 3.3V)
+Input voltage,3.3 V DC
+Working temperature,-20 \textendash 70\degree C
+Storage temperature,-40 \textendash 85\degree C

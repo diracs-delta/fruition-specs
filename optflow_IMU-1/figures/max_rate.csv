@@ -1,0 +1,4 @@
+Parameter,Symbol,condition,Rate,Unit
+Supply Voltage,VDD,,0\textendash 3.8,V
+Static Protection,ESD,HBM,2,KV
+Storage Temperature,Tstg,,-40\textendash +125,\degree C

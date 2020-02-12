@@ -1,0 +1,5 @@
+Parameter,Symbol,Condition,Rate,Unit
+"Operating
+Voltage", VCC,--,3.3V/0.15V (+/-),V
+"Operating 
+Temperature",TA,--,-20\textendash 50,\degree C

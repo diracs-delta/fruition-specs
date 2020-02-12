@@ -1,0 +1,14 @@
+Output data,Byte,Explanation
+Headers,1-2,0xFFFD
+System Time,3-6,"Time in ms. Measurement Range 0 \textemdash 4,294,967,296ms."
+Pitch,7-8,True Angle times 100 in degrees.
+Roll,9-10,True Angle times 100 in degrees.
+Yaw,11-12,True Angle times 100 in degrees.
+Z angular velocity (GyroZ),13-14,True Angle times 100 in degrees/second. (Range $\pm$ 1000 dps)
+,15,
+Motion,16,
+IQ,17-18,
+SumX,19-22,"X-displacement in mm. Range -2,147,483,648 \textemdash 2,147,483,647mm."
+SumY,23-26,"Y-displacement in mm. Range -2,147,483,648 \textemdash 2,147,483,647mm."
+Temperature,27,True temperature minus 30 and multiplied by 2.
+Checksum,28,
