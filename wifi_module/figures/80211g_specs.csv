@@ -1,0 +1,9 @@
+Feature,Detailed Description
+Standard,IEEE 802.11g
+Radio and Modulation Type,QPSK BPSK 16QAM 64QAM with OFDM
+Operating Frequency,2400\textendash2483.5MHz ISM band
+Channel Numbers,13 channels for Worldwide
+Maximum Data Rate,54 Mbps
+Media Access Protocol,CSMA/CA with ACK
+Transmitter Output Power at Antenna Connector,14$\pm$2 dBm at 54Mbps
+Receiver Sensitivity at Antenna Connector,-71 dBm at 54 Mbps

@@ -1,0 +1,8 @@
+Feature,Description
+Standard,IEEE 802.11n
+Radio and Modulation Type,BPSK QPSK 16QAM 64QAM with OFDM
+Operating Frequency,2400\textendash2483.5MHz
+Maximum Data Rate,150 Mbps
+Media Access Protocol,CSMA/CA with ACK
+Transmitter Output Power at Antenna Connector,12$\pm$2 dBm
+Receiver Sensitivity at Antenna Connector,-68 dBm
